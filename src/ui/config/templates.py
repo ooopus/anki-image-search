@@ -40,15 +40,6 @@ class TemplateDialog(QDialog):
 
         # Note type selector
         self.note_type_combo = QComboBox()
-        self.load_note_types()
-        self.note_type_combo.currentIndexChanged.connect(self.on_note_type_changed)
-
-        # Set current note type if editing
-        if self.template.note_type_name:
-            index = self.note_type_combo.findText(self.template.note_type_name)
-            if index >= 0:
-                self.note_type_combo.setCurrentIndex(index)
-
         layout.addRow(_("笔记类型:"), self.note_type_combo)
 
         # Search field
@@ -58,6 +49,16 @@ class TemplateDialog(QDialog):
         # Target field
         self.target_field_combo = QComboBox()
         layout.addRow(_("目标字段:"), self.target_field_combo)
+
+        # Load note types and connect signal AFTER creating all widgets
+        self.load_note_types()
+        self.note_type_combo.currentIndexChanged.connect(self.on_note_type_changed)
+
+        # Set current note type if editing
+        if self.template.note_type_name:
+            index = self.note_type_combo.findText(self.template.note_type_name)
+            if index >= 0:
+                self.note_type_combo.setCurrentIndex(index)
 
         # Enabled checkbox
         self.enabled_checkbox = QCheckBox(_("启用此模板"))
