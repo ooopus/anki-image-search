@@ -1,0 +1,420 @@
+# English translations for Anki Image Search.
+# Copyright (C) 2025
+# This file is distributed under the same license as the Anki Image Search
+# project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-03 10:39+0900\n"
+"PO-Revision-Date: 2025-01-01 12:00+0000\n"
+"Last-Translator: \n"
+"Language: en_US\n"
+"Language-Team: English\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: __init__.py:33
+#, python-brace-format
+msgid "无法解析最低支持版本: {}"
+msgstr ""
+
+#: __init__.py:47
+#, python-brace-format
+msgid ""
+"此插件需要 Anki {} 或更高版本。\n"
+"当前版本: {}\n"
+"\n"
+"请更新 Anki 以使用此插件。"
+msgstr ""
+
+#: __init__.py:53
+#, python-brace-format
+msgid "无法解析Anki版本: {}"
+msgstr ""
+
+#: __init__.py:91
+msgid "图片搜索设置..."
+msgstr ""
+
+#: __init__.py:99
+msgid "警告: 无法添加图片搜索菜单项"
+msgstr ""
+
+#: hooks.py:42
+msgid "请先选择一个笔记"
+msgstr ""
+
+#: hooks.py:54
+#, python-brace-format
+msgid "搜索字段 '{}' 不存在"
+msgstr ""
+
+#: hooks.py:60
+msgid "搜索字段为空"
+msgstr ""
+
+#: ui/image_picker.py:48
+msgid "加载中..."
+msgstr ""
+
+#: ui/image_picker.py:99 ui/image_picker.py:102
+msgid "加载失败"
+msgstr ""
+
+#: ui/image_picker.py:112
+msgid "无效图片"
+msgstr ""
+
+#: ui/image_picker.py:145
+#, python-brace-format
+msgid "选择图片 - {}"
+msgstr ""
+
+#: ui/image_picker.py:152
+#, python-brace-format
+msgid "找到 {} 张图片，点击选择："
+msgstr ""
+
+#: ui/image_picker.py:183
+msgid "插入图片"
+msgstr ""
+
+#: ui/image_picker.py:187
+msgid "取消"
+msgstr ""
+
+#: ui/image_picker.py:217
+msgid "无效的图片URL"
+msgstr ""
+
+#: ui/image_picker.py:221
+msgid "正在下载图片..."
+msgstr ""
+
+#: ui/image_picker.py:228
+msgid "下载图片失败"
+msgstr ""
+
+#: ui/image_picker.py:235
+msgid "保存图片失败"
+msgstr ""
+
+#: ui/image_picker.py:242
+#, python-brace-format
+msgid "图片已插入到 {}"
+msgstr ""
+
+#: ui/image_picker.py:245
+msgid "插入图片失败"
+msgstr ""
+
+#: ui/image_picker.py:251
+msgid "正在搜索图片..."
+msgstr ""
+
+#: ui/image_picker.py:258
+msgid "未找到图片，请尝试其他搜索词"
+msgstr ""
+
+#: ui/config/dialog.py:22
+msgid "图片搜索设置"
+msgstr ""
+
+#: ui/config/dialog.py:32 ui/config/general.py:37
+msgid "基本设置"
+msgstr ""
+
+#: ui/config/dialog.py:36
+msgid "模板配置"
+msgstr ""
+
+#: ui/config/general.py:41
+msgid "启用插件"
+msgstr ""
+
+#: ui/config/general.py:43 ui/config/templates.py:68
+msgid "状态:"
+msgstr ""
+
+#: ui/config/general.py:48
+msgid "自动检测"
+msgstr ""
+
+#: ui/config/general.py:49
+msgid "English"
+msgstr ""
+
+#: ui/config/general.py:50
+msgid "简体中文"
+msgstr ""
+
+#: ui/config/general.py:60
+msgid "语言:"
+msgstr ""
+
+#: ui/config/general.py:66
+msgid "字段配置"
+msgstr ""
+
+#: ui/config/general.py:72
+msgid "例如: Word, Front, 单词"
+msgstr ""
+
+#: ui/config/general.py:73 ui/config/templates.py:57
+msgid "搜索字段:"
+msgstr ""
+
+#: ui/config/general.py:78
+msgid "例如: Picture, Image, 图片"
+msgstr ""
+
+#: ui/config/general.py:79 ui/config/templates.py:63
+msgid "目标字段:"
+msgstr ""
+
+#: ui/config/general.py:85
+msgid "搜索设置"
+msgstr ""
+
+#: ui/config/general.py:92
+msgid "最大结果数:"
+msgstr ""
+
+#: ui/config/general.py:97
+msgid "低 (快速)"
+msgstr ""
+
+#: ui/config/general.py:98
+msgid "中等"
+msgstr ""
+
+#: ui/config/general.py:99
+msgid "高 (慢速)"
+msgstr ""
+
+#: ui/config/general.py:109
+msgid "图片质量:"
+msgstr ""
+
+#: ui/config/general.py:112
+msgid "自动下载并插入"
+msgstr ""
+
+#: ui/config/general.py:114
+msgid "下载方式:"
+msgstr ""
+
+#: ui/config/general.py:120
+msgid "格式转换 (需要 FFmpeg)"
+msgstr ""
+
+#: ui/config/general.py:124
+msgid "启用格式转换"
+msgstr ""
+
+#: ui/config/general.py:127
+msgid "转换:"
+msgstr ""
+
+#: ui/config/general.py:132
+msgid "保持原格式"
+msgstr ""
+
+#: ui/config/general.py:133
+msgid "WebP (推荐)"
+msgstr ""
+
+#: ui/config/general.py:134
+msgid "PNG (无损)"
+msgstr ""
+
+#: ui/config/general.py:135
+msgid "JPG/JPEG (有损)"
+msgstr ""
+
+#: ui/config/general.py:147
+msgid "输出格式:"
+msgstr ""
+
+#: ui/config/general.py:168
+msgid "转换质量:"
+msgstr ""
+
+#: ui/config/general.py:177
+msgid "FFmpeg 状态:"
+msgstr ""
+
+#: ui/config/templates.py:36
+msgid "编辑模板"
+msgstr ""
+
+#: ui/config/templates.py:51
+msgid "笔记类型:"
+msgstr ""
+
+#: ui/config/templates.py:56
+msgid "例如: Word, Front, Expression"
+msgstr ""
+
+#: ui/config/templates.py:62
+msgid "例如: Picture, Image, Photo"
+msgstr ""
+
+#: ui/config/templates.py:66
+msgid "启用此模板"
+msgstr ""
+
+#: ui/config/templates.py:114
+msgid "使用笔记类型特定配置（否则使用默认配置）"
+msgstr ""
+
+#: ui/config/templates.py:121
+msgid "笔记类型模板"
+msgstr ""
+
+#: ui/config/templates.py:133
+msgid "添加模板"
+msgstr ""
+
+#: ui/config/templates.py:136
+msgid "编辑"
+msgstr ""
+
+#: ui/config/templates.py:139
+msgid "删除"
+msgstr ""
+
+#: ui/config/templates.py:154
+msgid ""
+"提示: 为不同的笔记类型配置不同的字段映射。\n"
+"插件会自动根据当前笔记类型选择对应配置。"
+msgstr ""
+
+#~ msgid "图片搜索设置..."
+#~ msgstr "Image Search Settings..."
+
+#~ msgid "警告: 无法添加图片搜索菜单项"
+#~ msgstr "Warning: Cannot add image search menu item"
+
+#~ msgid "请先选择一个笔记"
+#~ msgstr "Please select a note first"
+
+#~ msgid "搜索字段 '{}' 不存在"
+#~ msgstr "Search field '{}' does not exist"
+
+#~ msgid "搜索字段为空"
+#~ msgstr "Search field is empty"
+
+#~ msgid "选择图片 - {}"
+#~ msgstr "Select Image - {}"
+
+#~ msgid "找到 {} 张图片，点击选择："
+#~ msgstr "Found {} images, click to select:"
+
+#~ msgid "插入图片"
+#~ msgstr "Insert Image"
+
+#~ msgid "取消"
+#~ msgstr "Cancel"
+
+#~ msgid "加载中..."
+#~ msgstr "Loading..."
+
+#~ msgid "加载失败"
+#~ msgstr "Failed to load"
+
+#~ msgid "无效图片"
+#~ msgstr "Invalid image"
+
+#~ msgid "无效的图片URL"
+#~ msgstr "Invalid image URL"
+
+#~ msgid "正在下载图片..."
+#~ msgstr "Downloading image..."
+
+#~ msgid "下载图片失败"
+#~ msgstr "Failed to download image"
+
+#~ msgid "保存图片失败"
+#~ msgstr "Failed to save image"
+
+#~ msgid "图片已插入到 {}"
+#~ msgstr "Image inserted to {}"
+
+#~ msgid "插入图片失败"
+#~ msgstr "Failed to insert image"
+
+#~ msgid "正在搜索图片..."
+#~ msgstr "Searching for images..."
+
+#~ msgid "未找到图片，请尝试其他搜索词"
+#~ msgstr "No images found, please try different search terms"
+
+#~ msgid "图片搜索设置"
+#~ msgstr "Image Search Settings"
+
+#~ msgid "基本设置"
+#~ msgstr "General Settings"
+
+#~ msgid "启用插件"
+#~ msgstr "Enable Plugin"
+
+#~ msgid "状态:"
+#~ msgstr "Status:"
+
+#~ msgid "自动检测"
+#~ msgstr "Auto Detect"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "简体中文"
+#~ msgstr "Simplified Chinese"
+
+#~ msgid "语言:"
+#~ msgstr "Language:"
+
+#~ msgid "字段配置"
+#~ msgstr "Field Configuration"
+
+#~ msgid "例如: Word, Front, 单词"
+#~ msgstr "e.g.: Word, Front, Expression"
+
+#~ msgid "搜索字段:"
+#~ msgstr "Search Field:"
+
+#~ msgid "例如: Picture, Image, 图片"
+#~ msgstr "e.g.: Picture, Image, Photo"
+
+#~ msgid "目标字段:"
+#~ msgstr "Target Field:"
+
+#~ msgid "搜索设置"
+#~ msgstr "Search Settings"
+
+#~ msgid "最大结果数:"
+#~ msgstr "Max Results:"
+
+#~ msgid "低 (快速)"
+#~ msgstr "Low (Fast)"
+
+#~ msgid "中等"
+#~ msgstr "Medium"
+
+#~ msgid "高 (慢速)"
+#~ msgstr "High (Slow)"
+
+#~ msgid "图片质量:"
+#~ msgstr "Image Quality:"
+
+#~ msgid "自动下载并插入"
+#~ msgstr "Auto Download and Insert"
+
+#~ msgid "下载方式:"
+#~ msgstr "Download Method:"
+
