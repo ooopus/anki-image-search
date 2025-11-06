@@ -10,6 +10,7 @@ from typing import Any
 try:
     import requests
     from bs4 import BeautifulSoup
+    import filetype
 
     DEPENDENCIES_AVAILABLE = True
 except ImportError:
@@ -30,6 +31,8 @@ class GoogleImageSearch:
     def __init__(self):
         self.session = None
         if DEPENDENCIES_AVAILABLE:
+            import requests
+
             self.session = requests.Session()
             self.session.headers.update({"User-Agent": USER_AGENT})
 
@@ -50,6 +53,8 @@ class GoogleImageSearch:
                 "udm": "2",  # Image search mode (unified display mode)
             }
 
+            import urllib.parse
+
             url = f"{GOOGLE_IMAGE_SEARCH_URL}?{urllib.parse.urlencode(params)}"
 
             # Make request
@@ -57,6 +62,8 @@ class GoogleImageSearch:
             response.raise_for_status()
 
             # Parse HTML
+            from bs4 import BeautifulSoup
+
             soup = BeautifulSoup(response.text, "html.parser")
 
             # Extract image data - Google Images with udm=2 uses img tags with class DS1iW
@@ -71,7 +78,11 @@ class GoogleImageSearch:
                     # Get image URL from src attribute
                     img_url = img_tag.get("src")
 
-                    if not img_url or img_url.startswith("data:") or img_url.startswith("/images/branding"):
+                    if (
+                        not img_url
+                        or img_url.startswith("data:")
+                        or img_url.startswith("/images/branding")
+                    ):
                         # Skip base64 thumbnails and Google logos
                         continue
 
@@ -89,15 +100,21 @@ class GoogleImageSearch:
                         # Extract the actual image URL from Google's redirect link
                         if href and "imgurl=" in href:
                             # Parse the imgurl parameter from Google's link
-                            import urllib.parse
-                            parsed = urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
+
+                            parsed = urllib.parse.parse_qs(
+                                urllib.parse.urlparse(href).query
+                            )
                             if "imgurl" in parsed:
                                 source_url = parsed["imgurl"][0]
                         else:
                             source_url = href
 
                     # Use the high-res source URL if available, otherwise use thumbnail
-                    final_url = source_url if source_url and source_url.startswith("http") else img_url
+                    final_url = (
+                        source_url
+                        if source_url and source_url.startswith("http")
+                        else img_url
+                    )
 
                     results.append(
                         {
@@ -159,8 +176,31 @@ class GoogleImageSearch:
         except Exception as e:
             print(f"[ImageSearch] 下载异常: {e}")
             import traceback
+
             traceback.print_exc()
             return None
+
+
+def _detect_image_format(data: bytes) -> str | None:
+    """
+    Detect image format from magic bytes using filetype library
+
+    Args:
+        data: Image binary data
+
+    Returns:
+        Format string (e.g., 'jpg', 'png', 'gif', 'webp') or None if unknown
+    """
+    try:
+        kind = filetype.image_match(data)
+        if kind:
+            # Return extension without leading dot
+            ext = kind.extension
+            return ext.lstrip(".")
+    except Exception:
+        pass
+
+    return None
 
 
 def save_image_to_media(image_data: bytes, url: str, note=None) -> str | None:
@@ -192,7 +232,9 @@ def save_image_to_media(image_data: bytes, url: str, note=None) -> str | None:
         from .state import get_config
 
         config = get_config()
-        print(f"[SaveImage] 格式转换: {config.convert_format}, 输出格式: {config.output_format.value}")
+        print(
+            f"[SaveImage] 格式转换: {config.convert_format}, 输出格式: {config.output_format.value}"
+        )
 
         # Convert format if enabled
         original_data = image_data
@@ -239,11 +281,9 @@ def save_image_to_media(image_data: bytes, url: str, note=None) -> str | None:
 
             # If no extension, try to guess from content
             if not ext or ext not in SUPPORTED_IMAGE_FORMATS:
-                # Try to detect from image data
+                # Try to detect from image data using magic bytes
                 print("[SaveImage] 从图片数据检测格式...")
-                import imghdr
-
-                detected = imghdr.what(None, h=image_data)
+                detected = _detect_image_format(image_data)
                 if detected:
                     ext = f".{detected}"
                     print(f"[SaveImage] 检测到格式: {detected}")
@@ -264,6 +304,7 @@ def save_image_to_media(image_data: bytes, url: str, note=None) -> str | None:
     except Exception as e:
         print(f"[SaveImage] 保存异常: {e}")
         import traceback
+
         traceback.print_exc()
         return None
 
@@ -315,5 +356,6 @@ def insert_image_to_field(editor, field_name: str, filename: str):
     except Exception as e:
         print(f"[InsertImage] 插入异常: {e}")
         import traceback
+
         traceback.print_exc()
         return False

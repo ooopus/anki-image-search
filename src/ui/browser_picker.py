@@ -36,11 +36,16 @@ class BrowserImagePickerDialog(QDialog):
         self.resize(1000, 700)
 
         layout = QVBoxLayout()
+        # Reduce margins and spacing for more compact layout
+        layout.setContentsMargins(0, 0, 0, 5)  # left, top, right, bottom
+        layout.setSpacing(0)  # spacing between widgets
 
         # Instructions label
         from aqt.qt import QLabel
 
         instructions = QLabel(_("在下方浏览器中浏览图片，右键点击图片选择「插入图片」"))
+        # Make label more compact - remove background to adapt to system theme
+        instructions.setStyleSheet("QLabel { padding: 5px 8px; font-size: 11px; }")
         layout.addWidget(instructions)
 
         # Browser view
@@ -65,7 +70,8 @@ class BrowserImagePickerDialog(QDialog):
         # Enable custom context menu
         self.setup_context_menu()
 
-        layout.addWidget(self.browser)
+        # Add browser with stretch factor to take up maximum space
+        layout.addWidget(self.browser, stretch=1)
 
         # Bottom buttons
         button_layout = QHBoxLayout()
@@ -95,7 +101,9 @@ class BrowserImagePickerDialog(QDialog):
 
         # Disable default context menu and use custom one
         self.browser.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        self.browser.customContextMenuRequested.connect(self.on_custom_context_menu_requested)
+        self.browser.customContextMenuRequested.connect(
+            self.on_custom_context_menu_requested
+        )
         print("[BrowserPicker] 已禁用默认右键菜单，启用自定义菜单")
 
         # Connect multiple signals to debug page loading
@@ -298,6 +306,7 @@ class BrowserImagePickerDialog(QDialog):
         except Exception as e:
             print(f"[BrowserPicker] 异常: {str(e)}")
             import traceback
+
             traceback.print_exc()
             showWarning(_("错误: {}").format(str(e)))
 
